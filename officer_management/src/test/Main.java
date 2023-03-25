@@ -46,7 +46,6 @@ public class Main {
                             }
                             CanBo worker = new CongNhan(name, age, gender, address, bacCongNhan);
                             officerList.addOfficer(worker);
-                            officerList.showInfoOfficer();
                             break;
                         }
                         case "engineer": {
@@ -63,7 +62,6 @@ public class Main {
                             String branch = sc.nextLine();
                             CanBo kySu = new KySu(name, age, gender, address, branch);
                             officerList.addOfficer(kySu);
-                            officerList.showInfoOfficer();
                             break;
                         }
                         case "staff": {
@@ -88,7 +86,6 @@ public class Main {
                             String task = sc.nextLine();
                             CanBo nhanVien = new NhanVien(name, age, gender, address, task);
                             officerList.addOfficer(nhanVien);
-                            officerList.showInfoOfficer();
                             break;
                         }
                     }
