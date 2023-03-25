@@ -5,7 +5,6 @@ import java.util.List;
 
 public class Bank {
     private List<Account> accounts;
-
     public Bank() {
         this.accounts = new ArrayList<>();
     }
@@ -23,21 +22,31 @@ public class Bank {
         }
     }
     public Account findAccount(String type){
-        if (this.accounts.size() == 0) {
-            System.out.println("EMPTY");
-            return null;
-        }
         Account findAccount = this.accounts
                 .stream()
                 .filter(account -> account.getAccountNumber().equals(type))
                 .findFirst()
                 .orElse(null);
-        if(findAccount != null){
+        if(findAccount != null) {
             return findAccount;
         }
-        else {
-            return null;
+        return null;
+    }
+    public Account login(String accountName, String password){
+        Account accountLogin = this.accounts
+                .stream()
+                .filter(account -> account.getAccountName().equals(accountName))
+                .findFirst()
+                .orElse(null);
+        if(accountLogin != null){
+            if(accountLogin.getPassword().equals(password)){
+                return accountLogin;
+            }
+            else {
+                System.out.println("Mật khẩu không đúng");
+            }
         }
+        return null;
     }
     public void showAccount(){
         this.accounts.forEach(account -> System.out.println(account.toString()));
