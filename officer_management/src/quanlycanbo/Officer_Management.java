@@ -3,7 +3,9 @@ package quanlycanbo;
 import cac_chuc_vu.CanBo;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Collections;
 import java.util.stream.Collectors;
 
 public class Officer_Management {
@@ -41,5 +43,24 @@ public class Officer_Management {
     }
     public void showInfoOfficer(){
         this.officers.forEach(officer -> System.out.println(officer.toString()));
+    }
+    public String lastName(String name){
+        String[] arrName = name.split("\\s+");
+        return arrName[arrName.length-1];
+    }
+    public void compareName(){
+        Collections.sort(this.officers, new Comparator<CanBo>(){
+            @Override
+            public int compare(CanBo s1, CanBo s2) {
+                int result = lastName(s1.getName()).compareTo(lastName(s2.getName()));
+                if(result == 0){
+                    String[] arrS1 = s1.getName().split("\\s+");
+                    String[] arrS2 = s2.getName().split("\\s+");
+                    result = Integer.compare(arrS1.length, arrS2.length);
+                }
+                return result;
+            }
+        });
+        showInfoOfficer();
     }
 }

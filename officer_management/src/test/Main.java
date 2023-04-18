@@ -15,6 +15,7 @@ public class Main {
             System.out.println("1: To insert officer");
             System.out.println("2. To search officer by name");
             System.out.println("3. To show information officers");
+            System.out.println("4. Sort Name");
             System.out.println("0. To exit");
             choose = sc.nextInt();
             switch (choose){
@@ -100,6 +101,10 @@ public class Main {
                 }
                 case 3: {
                     officerList.showInfoOfficer();
+                    break;
+                }
+                case 4: {
+                    officerList.compareName();
                     break;
                 }
                 case 0: {
